@@ -3,18 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReadFile_Text : MonoBehaviour
+public class CSVReader
 {
-    bool hasHeader = true;    
-    
-    Dictionary<string, List<Item>> Sources = new Dictionary<string, List<Item>>();    
+    bool hasHeader = true;
+    Dictionary<string, List<Item>> Sources = new Dictionary<string, List<Item>>();
+    string filePath;
+    public CSVReader (string _filePath)
+    {
+        filePath = _filePath;
 
-    void Start()
+    }
+
+    public void Read()
     {
         TextAsset MyFile = Resources.Load("mixbox_csv") as TextAsset;
         String File = MyFile.text;
         //print(File);
-        
+
         String[] Lines = File.Split('\n');
         //print(Lines.Length);
 
@@ -35,7 +40,7 @@ public class ReadFile_Text : MonoBehaviour
             string Type = Line[2];
             float Weight = float.Parse(Line[3]);
             Item MyItem = new Item(Source, Target, Type, Weight);
-            
+
             if (!Sources.ContainsKey(Source))
             {
                 List<Item> MyItems = new List<Item>();
@@ -44,11 +49,11 @@ public class ReadFile_Text : MonoBehaviour
             }
             else
             {
-                Sources[Source].Add(MyItem);                
+                Sources[Source].Add(MyItem);
             }
         }
 
-        print("Sources:" + Sources.Count);
+        Debug.Log("Sources:" + Sources.Count);
         /*
         foreach (KeyValuePair<string, List<Item>> item in Sources)
         {
@@ -67,21 +72,21 @@ public class ReadFile_Text : MonoBehaviour
         string TargetValue = "포스트잇";
         foreach (KeyValuePair<string, List<Item>> Pair in Sources)
         {
-            for(int i = 0; i  < Pair.Value.Count; i++)
+            for (int i = 0; i < Pair.Value.Count; i++)
             {
                 string Target = Pair.Value[i].GetTarget();
-                if(Target == TargetValue)
+                if (Target == TargetValue)
                 {
                     string Source = Pair.Value[i].GetSource();
-                    print(Source);
+                    Debug.Log(Source);
                     SourceWithSpecificTarget.Add(Source);
                 }
             }
         }
 
-        for(int i = 0; i < SourceWithSpecificTarget.Count; i++)
+        for (int i = 0; i < SourceWithSpecificTarget.Count; i++)
         {
-            print("[" + i + "]" + SourceWithSpecificTarget[i]);
+            Debug.Log("[" + i + "]" + SourceWithSpecificTarget[i]);
         }
 
         /*
@@ -92,5 +97,5 @@ public class ReadFile_Text : MonoBehaviour
         }
         */
     }
-}
 
+}
