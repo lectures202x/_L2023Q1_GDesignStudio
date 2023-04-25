@@ -1,10 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
-using static UnityEngine.Rendering.DebugUI;
 
 public class ReadFile_Text : MonoBehaviour
 {
@@ -53,13 +50,13 @@ public class ReadFile_Text : MonoBehaviour
 
         print("Sources:" + Sources.Count);
         
-        foreach (KeyValuePair<string, List<Item>> kvp in Sources)
+        foreach (KeyValuePair<string, List<Item>> item in Sources)
         {
             //Debug.Log("Key = "+ kvp.Key + ", Value = " + kvp.Value);
-            print("Key = " + kvp.Key);
-            for(int i = 0; i < kvp.Value.Count; i++)
+            print("Key = " + item.Key);
+            for(int i = 0; i < item.Value.Count; i++)
             {
-                print("["+ kvp.Key+"] Value.Target = " + kvp.Value[i].GetTarget());
+                print("["+ item.Key+"] Value.Target = " + item.Value[i].GetTarget());
             }
             print("-----------------");
         }
@@ -96,12 +93,12 @@ public class Item
     {
         return Target;
     }
-
+    /*
     public string GetType()
     {
         return Type;
     }
-
+    */
     public float GetWeight()
     {
         return Weight;
