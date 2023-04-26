@@ -7,7 +7,7 @@ public class Sample_ReadWriteFileAndVisualize_ReadFile : MonoBehaviour
 {
     bool hasHeader = true;
 
-    Dictionary<string, List<Item>> Sources = new Dictionary<string, List<Item>>();
+    Dictionary<string, List<_MixboxItem>> Sources = new Dictionary<string, List<_MixboxItem>>();
 
     void Start()
     {
@@ -36,11 +36,11 @@ public class Sample_ReadWriteFileAndVisualize_ReadFile : MonoBehaviour
             string Target = Line[1];
             string Type = Line[2];
             float Weight = float.Parse(Line[3]);
-            Item MyItem = new Item(Source, Target, Type, Weight);
+            _MixboxItem MyItem = new _MixboxItem(Source, Target, Type, Weight);
 
             if (!Sources.ContainsKey(Source))
             {
-                List<Item> MyItems = new List<Item>();
+                List<_MixboxItem> MyItems = new List<_MixboxItem>();
                 MyItems.Add(MyItem);
                 Sources.Add(Source, MyItems);
             }
@@ -54,7 +54,7 @@ public class Sample_ReadWriteFileAndVisualize_ReadFile : MonoBehaviour
 
         List<string> SourceWithSpecificTarget = new List<string>();
         string TargetValue = "포스트잇";
-        foreach (KeyValuePair<string, List<Item>> Pair in Sources)
+        foreach (KeyValuePair<string, List<_MixboxItem>> Pair in Sources)
         {
             for (int i = 0; i < Pair.Value.Count; i++)
             {

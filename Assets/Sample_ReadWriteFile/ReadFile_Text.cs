@@ -7,7 +7,7 @@ public class ReadFile_Text : MonoBehaviour
 {
     bool hasHeader = true;    
     
-    Dictionary<string, List<Item>> Sources = new Dictionary<string, List<Item>>();    
+    Dictionary<string, List<SomeItem>> Sources = new Dictionary<string, List<SomeItem>>();    
 
     void Start()
     {
@@ -34,17 +34,17 @@ public class ReadFile_Text : MonoBehaviour
             string Target = Line[1];
             string Type = Line[2];
             float Weight = float.Parse(Line[3]);
-            Item MyItem = new Item(Source, Target, Type, Weight);
+            SomeItem someItem = new SomeItem(Source, Target, Type, Weight);
             
             if (!Sources.ContainsKey(Source))
             {
-                List<Item> MyItems = new List<Item>();
-                MyItems.Add(MyItem);
+                List<SomeItem> MyItems = new List<SomeItem>();
+                MyItems.Add(someItem);
                 Sources.Add(Source, MyItems);
             }
             else
             {
-                Sources[Source].Add(MyItem);                
+                Sources[Source].Add(someItem);                
             }
         }
 
@@ -65,7 +65,7 @@ public class ReadFile_Text : MonoBehaviour
         // 특정한 
         List<string> SourceWithSpecificTarget = new List<string>();
         string TargetValue = "포스트잇";
-        foreach (KeyValuePair<string, List<Item>> Pair in Sources)
+        foreach (KeyValuePair<string, List<SomeItem>> Pair in Sources)
         {
             for(int i = 0; i  < Pair.Value.Count; i++)
             {
@@ -93,4 +93,45 @@ public class ReadFile_Text : MonoBehaviour
         */
     }
 }
+
+public class SomeItem
+{
+    string Source;
+    string Target;
+    string Type;
+    float Weight;
+
+    public SomeItem(string source, string target, string type, float weight)
+    {
+        Source = source;
+        Target = target;
+        Type = type;
+        Weight = weight;
+    }
+
+    public string GetSource()
+    {
+        return Source;
+    }
+
+    public string GetTarget()
+    {
+        return Target;
+    }
+    /*
+    public string GetType()
+    {
+        return Type;
+    }
+    */
+    public float GetWeight()
+    {
+        return Weight;
+    }
+    public void Show()
+    {
+        Debug.Log(Source + " " + Target + " " + Type + " " + Weight);
+    }
+}
+
 

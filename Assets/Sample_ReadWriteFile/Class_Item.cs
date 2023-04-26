@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item
+public class _MixboxItem
 {
     string Source;
     string Target;
     string Type;
     float Weight;
 
-    public Item(string source, string target, string type, float weight)
+    public _MixboxItem(string source, string target, string type, float weight)
     {
         Source = source;
         Target = target;
