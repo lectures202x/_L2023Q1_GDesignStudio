@@ -3,19 +3,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CSVReader
+public class CSVHelper
 {
-    bool hasHeader = true;
-    Dictionary<string, List<_MixboxItem>> Sources = new Dictionary<string, List<_MixboxItem>>();
-    string filePath;
-    public CSVReader (string _filePath)
-    {
-        filePath = _filePath;
+    String FilePath;
 
+    // CSV Common Structure
+    List<String> Keys;                      // Row Names
+    List<String> Values;                    // Row Values
+    Dictionary<string, List<String>> Col;   // Single Column 
+    List<Dictionary<String, List<String>>> CSVData; // Collection of Cols
+
+    // Target CSV
+    MixboxCSV CSV;
+
+    public CSVHelper()
+    {
+        FilePath = "mixbox_csv";
+        TextAsset Result = ReadFile(FilePath);
+        String[] Lines = GetLines(Result);
+
+        MixboxCSV MB = new MixboxCSV(Lines);
+        MB.PrintHeaders();
+        
     }
 
-    public void Read()
+    public TextAsset ReadFile(string _FilePath)
     {
+        FilePath = _FilePath;
+        TextAsset textAsset = Resources.Load(FilePath) as TextAsset;
+        return textAsset;
+    }
+
+    public String[] GetLines(TextAsset _TextAsset)
+    {
+        String File = _TextAsset.text;
+        String[] Lines = File.Split('\n');
+        return Lines;
+    }
+
+    public String[] GetVariablesFromLine(string _Line)
+    {
+        _Line = _Line.Trim();
+        String[] Variables = _Line.Split(',');
+        return Variables;
+    }
+
+
+
+    /*
+    public void Read(string _FilePath)
+    {
+        FilePath = _FilePath;
         TextAsset MyFile = Resources.Load("mixbox_csv") as TextAsset;
         String File = MyFile.text;
         //print(File);
@@ -54,18 +92,7 @@ public class CSVReader
         }
 
         Debug.Log("Sources:" + Sources.Count);
-        /*
-        foreach (KeyValuePair<string, List<Item>> item in Sources)
-        {
-            //Debug.Log("Key = "+ kvp.Key + ", Value = " + kvp.Value);
-            print("Key = " + item.Key);
-            for(int i = 0; i < item.Value.Count; i++)
-            {
-                print("["+ item.Key+"] Value.Target = " + item.Value[i].GetTarget());
-            }
-            print("-----------------");
-        }
-        */
+
 
         // 특정한 
         List<string> SourceWithSpecificTarget = new List<string>();
@@ -89,13 +116,7 @@ public class CSVReader
             Debug.Log("[" + i + "]" + SourceWithSpecificTarget[i]);
         }
 
-        /*
-        List<Item> SomeSources = Sources["시각"];
-        for (int i = 0; i < SomeSources.Count; i++)
-        {
-            print(SomeSources[i].GetSource() + ":" + SomeSources[i].GetTarget());
-        }
-        */
-    }
+    */
+    
 
 }
