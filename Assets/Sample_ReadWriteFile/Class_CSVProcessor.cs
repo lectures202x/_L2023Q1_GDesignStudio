@@ -14,7 +14,7 @@ public class CSVProcessor
     List<Dictionary<String, List<String>>> CSVData; // Collection of Cols
 
     // Target CSV
-    MixboxCSV CSV;
+    Mixbox CSV;
 
     public CSVProcessor()
     {
@@ -22,7 +22,7 @@ public class CSVProcessor
         TextAsset Result = ReadFile(FilePath);
         String[] Lines = GetLines(Result);
 
-        MixboxCSV MB = new MixboxCSV(Lines);
+        Mixbox MB = new Mixbox(Lines);
         MB.PrintHeaders();
         
     }
