@@ -7,7 +7,7 @@ public class Sample_ReadWriteFileAndVisualize_ReadFile : MonoBehaviour
 {
     private void Start()
     {
-        CSVHelper CSV = new CSVHelper();
+        CSVProcessor CSV = new CSVProcessor();
     }
 }
 

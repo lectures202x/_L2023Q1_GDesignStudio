@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
 
-public class MixboxCSV
+public class Mixbox
 {
     // CSV Properties
     public bool hasHeader;
@@ -19,7 +19,7 @@ public class MixboxCSV
     string Type;
     float Weight;    
 
-    public MixboxCSV(string[] _Lines)
+    public Mixbox(string[] _Lines)
     {
         hasHeader = true;
         hasLineNumbers = false;

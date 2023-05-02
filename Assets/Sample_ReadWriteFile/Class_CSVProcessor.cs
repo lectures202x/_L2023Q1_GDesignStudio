@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CSVHelper
+public class CSVProcessor
 {
     String FilePath;
 
@@ -16,7 +16,7 @@ public class CSVHelper
     // Target CSV
     MixboxCSV CSV;
 
-    public CSVHelper()
+    public CSVProcessor()
     {
         FilePath = "mixbox_csv";
         TextAsset Result = ReadFile(FilePath);
