@@ -7,7 +7,7 @@ using UnityEngine.Analytics;
 public class Mixbox
 {
     // CSV Properties
-    public bool hasHeader;
+    public bool hasHeader= false;
     public int startIndex, endIndex;
     public bool hasLineNumbers;
     public List<string> Header; // Col Names
@@ -29,6 +29,14 @@ public class Mixbox
             SetHeader(_Lines);
             startIndex = 1;
             endIndex = _Lines.Length - 1;
+        }
+    }
+
+    public Mixbox()
+    {
+        if (hasHeader)
+        {
+            startIndex = 1;
         }
     }
 

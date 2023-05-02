@@ -7,6 +7,7 @@ public class Sample_ReadWriteFileAndVisualize_ReadFile : MonoBehaviour
 {
     private void Start()
     {
+        Mixbox MB = new Mixbox();
         CSVProcessor CSV = new CSVProcessor();
     }
 }
