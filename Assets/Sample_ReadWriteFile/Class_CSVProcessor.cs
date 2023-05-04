@@ -18,13 +18,17 @@ public class CSVProcessor
 
     public CSVProcessor()
     {
-        FilePath = "mixbox_csv";
-        TextAsset Result = ReadFile(FilePath);
-        String[] Lines = GetLines(Result);
+        //FilePath = "mixbox_csv";
+        //TextAsset Result = ReadFile(FilePath);
+        //String[] Lines = GetLines(Result);
 
-        Mixbox MB = new Mixbox(Lines);
-        MB.PrintHeaders();
-        
+        //Mixbox MB = new Mixbox(Lines);
+        //MB.PrintHeaders();
+    }
+
+    public void SetPath(string _FilePath)
+    {
+        FilePath = _FilePath;
     }
 
     public TextAsset ReadFile(string _FilePath)

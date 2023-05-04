@@ -9,6 +9,7 @@ public class Sample_ReadWriteFileAndVisualize_ReadFile : MonoBehaviour
     {
         Mixbox MB = new Mixbox();
         CSVProcessor CSV = new CSVProcessor();
+        CSV.SetPath("mixbox_csv");
     }
 }
 
