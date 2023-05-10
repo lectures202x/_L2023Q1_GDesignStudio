@@ -1,0 +1,8 @@
+MultiPlayer Shooting Game Scripting Process
+
+1. ShootingGame_NetworkManager.cs
+2. ShootingGame_PlayerMove.cs
+3. ShootingGame_PlayerName.cs
+4. ShootingGame_PlayerShoot.cs
+5. ShootingGame_PlayerHealth.cs
+6. ShootingGame_Bullet.cs
